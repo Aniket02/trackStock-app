@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="Aniket Shah">
+    <title>Track NASDAQ listed stocks</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script type="text/javascript" src="js/stocks.js"></script>
+    <link rel="stylesheet" href="./css/style.css"/>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="title">
+                <h1>NASDAQ/NYSE Stock Listed Stocks</h1>
+            </div>
+            <market>
+                <ul>
+                    <li id=NASDAQ ><span class = "market">NASDAQ</span> Volume: <span class = "volume"></span>  <span class = "time"></span></li>
+                    <li id=NYSE ><span class = "market">NYSE</span> Volume: <span class ="volume" ></span>  <span class = "time"></span></li>
+                </ul>
+            </market>
+        </div>
+    </header>
+    <section id="selection">
+        <div class = "container">
+            <div class = "selection1">
+                <select class="js-example-data-array" style="width: 25%" name="symbol">
+                    <option></option>
+                </select>
+                <button type="submit" class="button_1" id = "add">Add</button>
+            </div>
+        </div>
+    </section>
+    <section id="stocks">
+        <div class = "container">
+            <div id="stock-template">
+                <div class = "stockTitle">
+                    <span id = "toggle">[+]</span>
+                    <span id="stockHeading"></span>
+                    <button type="button" id="ref">Refresh</button>
+                    <button type="button" id="del">Delete</button>
+                    <span class = "time"></span></li>
+                </div>
+                <div class = "stock-data">
+                    <div class = "stock-info-group">
+                        <div id="Company">
+                            <h3 class="title1">Company</h3>
+                            <p ><span class = "stock-info">Symbol:  </span><span id = "symbol" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Company Name: </span><span id = "companyName" class = "data1"></span></p> 
+                            <p ><span class = "stock-info">Industry: </span><span id = "industry" class = "data1"></span></p> 
+                            <p ><span class = "stock-info">Website: </span><a id = "website" class = "data1"></a></p>
+                            <p ><span class = "stock-info">Issue Type: </span><span id = "issueType" class = "data1"></span></p>
+                            <p ><span class = "stock-info">CEO: </span><span id = "ceo" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Sector: </span><span id = "sector" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Exchange: </span><span id = "exchange" class = "data1"></span></p>
+                        </div>                          
+                    </div>
+                    <div class = "stock-info-group">
+                        <div id="Financials">
+                            <h3 class="title1">Financials</h3>
+                            <p ><span class = "stock-info">Total Revenue:  </span><span id = "totalRevenue" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Gross Profit: </span><span id = "grossProfit" class = "data1"></span></p> 
+                            <p ><span class = "stock-info">Operating Income: </span><span id = "operatingIncome" class = "data1"></span></p> 
+                            <p ><span class = "stock-info">Net Income: </span><span id = "netIncome" class = "data1"></span></p>
+                            <p ><span class = "stock-info">R and D: </span><span id = "rd" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Total Liabilities: </span><span id = "liabilities" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Total Assets: </span><span id = "assets" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Report Date: </span><span id = "report" class = "data1"></span></p>
+                        </div>                        
+                    </div>
+                    <div class = "stock-info-group">
+                        <div id="Quote">
+                            <h3 class="title1">Quote</h3>
+                            <p ><span class = "stock-info">Latest Price:  </span><span id = "latestPrice" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Latest Volume: </span><span id = "latestVolume" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Latest Update: </span><span id = "latestUpdate" class = "data1"></span></p> 
+                            <p ><span class = "stock-info">PE Ratio: </span><span id = "peRatio" class = "data1"></span></p> 
+                            <p ><span class = "stock-info">52 Week High: </span><span id = "week52High" class = "data1"></span></p>
+                            <p ><span class = "stock-info">52 Week Low: </span><span id = "week52Low" class = "data1"></span></p>
+                            <p ><span class = "stock-info">Market Cap: </span><span id = "marketCap" class = "data1"></span></p>
+                            <p ><span class = "stock-info">YTD Change: </span><span id = "ytdChange" class = "data1"></span></p>
+                        </div>                        
+                    </div>
+                    <div class = "stock-info-group">
+                        <div id="News">
+                            <h3 class="title1">Relevant News</h3>
+                            <p ><span class = "stock-info"></span><a target = "_blank" id = "link-0" class = "data1"></a></p>
+                            <p ><span class = "stock-info"></span><a target = "_blank" id = "link-1" class = "data1"></a></p>
+                            <p ><span class = "stock-info"></span><a target = "_blank" id = "link-2" class = "data1"></a></p> 
+                            <p ><span class = "stock-info"></span><a target = "_blank" id = "link-3" class = "data1"></a></p> 
+                            <p ><span class = "stock-info"></span><a target = "_blank" id = "link-4" class = "data1"></a></p>
+                            <p ><span class = "stock-info"></span><a target = "_blank" id = "link-5" class = "data1"></a></p>
+                            <p ><span class = "stock-info"></span><a target = "_blank" id = "link-6" class = "data1"></a></p>
+                            <p ><span class = "stock-info"></span><a target = "_blank" id = "link-7" class = "data1"></a></p>
+                        </div>                        
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
